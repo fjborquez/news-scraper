@@ -2,8 +2,10 @@ from pprint import pprint
 
 from gnews import GNews
 
+import news_persistence_client
+
 TOPICS = ['WORLD', 'NATION', 'BUSINESS', 'TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE', 'HEALTH']
-PERIOD = '2h'
+PERIOD = '12h'
 gnews_client = GNews(period=PERIOD)
 
 
@@ -11,7 +13,6 @@ def main():
     news = get_news()
     set_full_article(news)
     send_to_api(news)
-    pprint(news)
 
 
 def get_news():
@@ -32,7 +33,8 @@ def set_full_article(news):
 
 
 def send_to_api(news):
-    return ""
+    for a_news in news:
+        return news_persistence_client.send_to_api(a_news)
 
 
 main()
