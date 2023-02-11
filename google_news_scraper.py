@@ -5,7 +5,7 @@ from gnews import GNews
 import news_persistence_client
 
 TOPICS = ['WORLD', 'NATION', 'BUSINESS', 'TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE', 'HEALTH']
-PERIOD = '12h'
+PERIOD = '3h'
 gnews_client = GNews(period=PERIOD)
 
 
