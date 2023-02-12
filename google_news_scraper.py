@@ -53,7 +53,7 @@ def send_to_api(news):
 
 def get_news_companies(news):
     for a_news in news:
-        search_companies(a_news['full_article'])
+        search_companies(a_news)
 
 
 main()
