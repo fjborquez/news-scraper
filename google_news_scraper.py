@@ -22,14 +22,15 @@ def get_news():
     news = []
 
     for topic in TOPICS:
-        pprint(news)
         news.append(gnews_client.get_news_by_topic(topic))
 
     return news
 
 
 def set_full_article(news):
+    print(news)
     for a_news in news:
+        print(a_news)
         try:
             a_news["full_article"] = gnews_client.get_full_article(a_news["url"]).text
         except:
