@@ -38,13 +38,13 @@ def send_to_api(news):
     for a_news in news:
         news_to_send = {
             'id': uuid.uuid1().int >> 64,
-            'title': news['title'],
-            'body': news['full_article'],
-            'date': news['published date'],
-            'url': news['url'],
+            'title': a_news['title'],
+            'body': a_news['full_article'],
+            'date': a_news['published date'],
+            'url': a_news['url'],
             'site': {
-                'url': news['publisher']['href'],
-                'name': news['publisher']['title'],
+                'url': a_news['publisher']['href'],
+                'name': a_news['publisher']['title'],
             }
         }
 
@@ -53,7 +53,7 @@ def send_to_api(news):
 
 def get_news_companies(news):
     for a_news in news:
-        search_companies(a_news)
+        search_companies(a_news['full_article'])
 
 
 main()
