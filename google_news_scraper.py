@@ -1,4 +1,5 @@
 import uuid
+from pprint import pprint
 
 from gnews import GNews
 
@@ -18,16 +19,17 @@ def main():
 
 
 def get_news():
-    read = []
+    news = []
 
     for topic in TOPICS:
-        read.append(gnews_client.get_news_by_topic(topic))
+        news.append(gnews_client.get_news_by_topic(topic))
 
-    return read
+    return news
 
 
 def set_full_article(news):
     for a_news in news:
+        pprint(a_news)
         try:
             a_news['full_article'] = gnews_client.get_full_article(a_news['url']).text
         except:
