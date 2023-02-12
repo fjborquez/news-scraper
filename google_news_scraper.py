@@ -1,8 +1,9 @@
-from pprint import pprint
+import uuid
 
 from gnews import GNews
 
 import news_persistence_client
+from news_analyzer_client import search_companies
 
 TOPICS = ['WORLD', 'NATION', 'BUSINESS', 'TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE', 'HEALTH']
 PERIOD = '3h'
@@ -12,6 +13,7 @@ gnews_client = GNews(period=PERIOD)
 def main():
     news = get_news()
     set_full_article(news)
+    get_news_companies(news)
     send_to_api(news)
 
 
@@ -34,7 +36,24 @@ def set_full_article(news):
 
 def send_to_api(news):
     for a_news in news:
-        return news_persistence_client.send_to_api(a_news)
+        news_to_send = {
+            'id': uuid.uuid1().int >> 64,
+            'title': news['title'],
+            'body': news['full_article'],
+            'date': news['published date'],
+            'url': news['url'],
+            'site': {
+                'url': news['publisher']['href'],
+                'name': news['publisher']['title'],
+            }
+        }
+
+        return news_persistence_client.send_to_api(news_to_send)
+
+
+def get_news_companies(news):
+    for a_news in news:
+        search_companies(a_news)
 
 
 main()
