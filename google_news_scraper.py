@@ -33,7 +33,7 @@ def set_full_article(news):
         try:
             a_news["full_article"] = gnews_client.get_full_article(a_news["url"]).text
         except:
-            a_news["full_article"] = ''
+            pass
 
 
 def send_to_api(news):
