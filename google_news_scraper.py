@@ -31,9 +31,9 @@ def set_full_article(news):
     for a_news in news:
         pprint(a_news)
         try:
-            a_news['full_article'] = gnews_client.get_full_article(a_news['url']).text
+            a_news["full_article"] = gnews_client.get_full_article(a_news["url"]).text
         except:
-            a_news['full_article'] = ''
+            a_news["full_article"] = ''
 
 
 def send_to_api(news):
