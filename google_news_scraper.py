@@ -21,7 +21,7 @@ def get_news():
     read = []
 
     for topic in TOPICS:
-        read += gnews_client.get_news_by_topic(topic)
+        read.append(gnews_client.get_news_by_topic(topic))
 
     return read
 
