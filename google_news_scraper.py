@@ -22,23 +22,23 @@ def get_news():
     news = []
 
     for topic in TOPICS:
+        type(news)
         news.append(gnews_client.get_news_by_topic(topic))
-        print("WITH: " + topic)
-        pprint(news)
+        type(news)
 
     return news
 
 
 def set_full_article(news):
-    for a_news in news:
-        try:
-            a_news.update({
-                'full_article': gnews_client.get_full_article(a_news["url"]).text
-            })
-        except:
-            a_news.update({
-                'full_article': ''
-            })
+    # for a_news in news:
+     #   try:
+      #      a_news.update({
+       #         'full_article': gnews_client.get_full_article(a_news["url"]).text
+        #    })
+        #except:
+         #   a_news.update({
+          #      'full_article': ''
+           # })
 
 
 def send_to_api(news):
