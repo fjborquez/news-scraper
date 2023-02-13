@@ -23,10 +23,8 @@ def get_news():
 
     for topic in TOPICS:
         for a_news in gnews_client.get_news_by_topic(topic):
-            pprint(type(a_news))
+            news.append(a_news)
             
-        news.append(gnews_client.get_news_by_topic(topic))
-
     return news
 
 
