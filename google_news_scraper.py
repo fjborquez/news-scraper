@@ -19,12 +19,16 @@ def main():
 
 
 def get_news():
-    news = []
+    news0 = gnews_client.get_news_by_topic(TOPICS[0])
+    news1 = gnews_client.get_news_by_topic(TOPICS[1])
+    news2 = gnews_client.get_news_by_topic(TOPICS[2])
+    news3 = gnews_client.get_news_by_topic(TOPICS[3])
+    news4 = gnews_client.get_news_by_topic(TOPICS[4])
+    news5 = gnews_client.get_news_by_topic(TOPICS[5])
+    news6 = gnews_client.get_news_by_topic(TOPICS[6])
+    news7 = gnews_client.get_news_by_topic(TOPICS[7])
 
-    for topic in TOPICS:
-        news = [*news, *gnews_client.get_news_by_topic(topic)]
-
-    return news
+    return [*news0, *news1, *news2, *news3, *news4, *news5, *news6, *news7]
 
 
 def set_full_article(news):
