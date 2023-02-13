@@ -1,5 +1,4 @@
 import uuid
-from pprint import pprint
 
 from gnews import GNews
 
@@ -23,8 +22,9 @@ def get_news():
 
     for topic in TOPICS:
         for a_news in gnews_client.get_news_by_topic(topic):
+            a_news["topic"] = topic
             news.append(a_news)
-            
+
     return news
 
 
@@ -39,7 +39,6 @@ def set_full_article(news):
                 'full_article': ''
             })
 
-
 def send_to_api(news):
     for a_news in news:
         news_to_send = {
@@ -51,10 +50,11 @@ def send_to_api(news):
             'site': {
                 'url': a_news['publisher']['href'],
                 'name': a_news['publisher']['title'],
-            }
+            },
+            'companies': a_news['companies']
         }
 
-        return news_persistence_client.send_to_api(news_to_send)
+        news_persistence_client.send_to_api(news_to_send)
 
 
 def get_news_companies(news):

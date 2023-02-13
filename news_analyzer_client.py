@@ -6,3 +6,5 @@ def search_companies(news):
 
     if len(companies) > 0:
         news["companies"] = companies
+    else:
+        news["companies"] = []
