@@ -25,7 +25,7 @@ def get_news():
         news.append(gnews_client.get_news_by_topic(topic))
 
     for a_news in news:
-        a_news = dict(a_news)
+        type(a_news)
 
     return news
 
