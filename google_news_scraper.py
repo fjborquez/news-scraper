@@ -22,9 +22,8 @@ def get_news():
     news = []
 
     for topic in TOPICS:
-        news = news + [x for x in topic if x not in news]
+        news = news + [x for x in gnews_client.get_news_by_topic(topic) if x not in news]
 
-    pprint(news)
     return news
 
 
