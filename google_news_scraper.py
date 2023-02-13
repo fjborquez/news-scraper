@@ -30,15 +30,15 @@ def get_news():
 
 
 def set_full_article(news):
-    # for a_news in news:
-     #   try:
-      #      a_news.update({
-       #         'full_article': gnews_client.get_full_article(a_news["url"]).text
-        #    })
-        #except:
-         #   a_news.update({
-          #      'full_article': ''
-           # })
+    for a_news in news:
+        try:
+            a_news.update({
+                'full_article': gnews_client.get_full_article(a_news["url"]).text
+            })
+        except:
+            a_news.update({
+                'full_article': ''
+            })
 
 
 def send_to_api(news):
