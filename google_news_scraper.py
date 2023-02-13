@@ -22,7 +22,9 @@ def get_news():
     news = []
 
     for topic in TOPICS:
-        news = news + [x for x in gnews_client.get_news_by_topic(topic) if x not in news]
+        news.append(gnews_client.get_news_by_topic(topic))
+        print("WITH: " + topic)
+        pprint(news)
 
     return news
 
