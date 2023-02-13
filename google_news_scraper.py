@@ -22,7 +22,7 @@ def get_news():
     news = []
 
     for topic in TOPICS:
-        news = news + [x for x in topic if x not in topic]
+        news = news + [x for x in topic if x not in news]
 
     pprint(news)
     return news
