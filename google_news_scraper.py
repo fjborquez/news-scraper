@@ -22,9 +22,10 @@ def get_news():
     news = []
 
     for topic in TOPICS:
-        type(news)
         news.append(gnews_client.get_news_by_topic(topic))
-        type(news)
+
+    for a_news in news:
+        a_news = dict(a_news)
 
     return news
 
