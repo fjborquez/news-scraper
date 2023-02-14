@@ -12,8 +12,6 @@ gnews_client = GNews(period=PERIOD)
 
 def main():
     news = get_news()
-    set_full_article(news)
-    get_news_companies(news)
     send_to_api(news)
 
 
@@ -22,22 +20,26 @@ def get_news():
 
     for topic in TOPICS:
         for a_news in gnews_client.get_news_by_topic(topic):
-            a_news["topic"] = topic
+            complete_news_data(a_news, topic)
             news.append(a_news)
 
     return news
 
 
-def set_full_article(news):
-    for a_news in news:
-        try:
-            a_news.update({
-                'full_article': gnews_client.get_full_article(a_news["url"]).text
-            })
-        except:
-            a_news.update({
-                'full_article': ''
-            })
+def complete_news_data(news, topic):
+    news["topic"] = topic
+    news["full_article"] = get_full_article(news)
+    news["companies"] = get_companies(news)
+
+
+def get_full_article(news):
+    try:
+        full_article = gnews_client.get_full_article(news["url"]).text
+    except:
+        full_article = ''
+
+    return full_article
+
 
 def send_to_api(news):
     for a_news in news:
@@ -57,9 +59,8 @@ def send_to_api(news):
         news_persistence_client.send_to_api(news_to_send)
 
 
-def get_news_companies(news):
-    for a_news in news:
-        search_companies(a_news)
+def get_companies(news):
+    return search_companies(news)
 
 
 main()
