@@ -44,7 +44,6 @@ def get_full_article(news):
 def send_to_api(news):
     for a_news in news:
         news_to_send = {
-            'id': uuid.uuid1().int >> 64,
             'title': a_news['title'],
             'body': a_news['full_article'],
             'date': a_news['published date'],
