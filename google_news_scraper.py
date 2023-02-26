@@ -6,7 +6,7 @@ import news_persistence_client
 from news_analyzer_client import search_companies
 
 TOPICS = ['WORLD', 'NATION', 'BUSINESS', 'TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE', 'HEALTH']
-PERIOD = '3h'
+PERIOD = '1h'
 gnews_client = GNews(period=PERIOD)
 
 
