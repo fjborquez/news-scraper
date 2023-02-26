@@ -1,4 +1,5 @@
 import uuid
+import logging
 
 from gnews import GNews
 
@@ -8,11 +9,14 @@ from news_analyzer_client import search_companies
 TOPICS = ['WORLD', 'NATION', 'BUSINESS', 'TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE', 'HEALTH']
 PERIOD = '1h'
 gnews_client = GNews(period=PERIOD)
+logging.basicConfig(filename="log.txt", level=logging.DEBUG)
 
 
 def main():
+    logging.debug("Iniciando la tarea")
     news = get_news()
     send_to_api(news)
+    logging.debug("Finalizando la tarea")
 
 
 def get_news():
