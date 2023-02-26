@@ -6,17 +6,18 @@ from gnews import GNews
 import news_persistence_client
 from news_analyzer_client import search_companies
 
-TOPICS = ['WORLD', 'NATION', 'BUSINESS', 'TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE', 'HEALTH']
+TOPICS = ['WORLD']
 PERIOD = '1h'
 gnews_client = GNews(period=PERIOD)
 logging.basicConfig(filename="log.txt", level=logging.DEBUG)
 
 
 def main():
-    logging.debug("Iniciando la tarea")
+    logging.debug("Init scraper task")
     news = get_news()
+    print("Init send to api task")
     send_to_api(news)
-    logging.debug("Finalizando la tarea")
+    logging.debug("Finishing scraper task")
 
 
 def get_news():
