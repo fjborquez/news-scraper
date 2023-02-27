@@ -6,7 +6,7 @@ from gnews import GNews
 import news_persistence_client
 from news_analyzer_client import search_companies
 
-TOPICS = ['WORLD']
+TOPICS = ['BUSINESS']
 PERIOD = '1h'
 gnews_client = GNews(period=PERIOD)
 logging.basicConfig(filename="log.txt", level=logging.DEBUG)
